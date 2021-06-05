@@ -14,7 +14,9 @@
     shell: |
       set -o pipefail
       yum repolist|grep ^powertools
-    when: ansible_distribution != 'RedHat'
+    when:
+    - ansible_distribution != 'RedHat'
+    - ansible_distribution_major_version is version('8', '>=')
     changed_when: false
     args:
       warn: false
@@ -24,7 +26,9 @@
     shell: |
       set -o pipefail
       yum repolist|grep ^codeready-builder-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms
-    when: ansible_distribution == 'RedHat'
+    when:
+    - ansible_distribution == 'RedHat'
+    - ansible_distribution_major_version is version('8', '>=')
     changed_when: false
     args:
       warn: false
