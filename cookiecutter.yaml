@@ -1,0 +1,11 @@
+default_context:
+  _template: https://github.com/mafalb/cookiecutters-ansible
+  author_email: markus.falb@mafalb.at
+  author_name: Markus Falb
+  collection: mafalb.epel
+  collection_name: epel
+  destdir: epel
+  hosted_by: github
+  license: GPL-3.0-or-later
+  namespace: mafalb
+  repository_url: https://github.com/mafalb/ansible-collection-epel
