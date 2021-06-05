@@ -8,8 +8,19 @@
     http_proxy: http://ci-proxy:3128
     https_proxy: http://ci-proxy:3128
 
-  roles:
+  tasks:
 
-  - role: mafalb.epel.release
+  - block:
+
+    - name: include mafalb.epel.release
+      include_role:
+        name: mafalb.epel.release
+
+    rescue:
+      
+    - name: it is ok that fedora fails
+      assert:
+        that:
+        - ansible_distribution == 'Fedora'
 
 ...
