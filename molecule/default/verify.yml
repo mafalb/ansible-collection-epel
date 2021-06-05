@@ -34,5 +34,8 @@
       warn: false
       executable: /bin/bash
 
+  - name: test package install
+    package:
+      name: epel-rpm-macros.noarch
 
 ...

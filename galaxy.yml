@@ -43,7 +43,7 @@ tags:
 dependencies: {}
 
 # The URL of the originating SCM repository
-repository: https://github.com/mafalb/ansible-collection-ansible
+repository: https://github.com/mafalb/ansible-collection-epel
 
 # The URL to any online docs
 documentation: https://github.com/mafalb/ansible-collection-epel
