@@ -12,18 +12,23 @@
 
   - name: powertools is enabled
     shell: |
+      set -o pipefail
       yum repolist|grep ^powertools
     when: ansible_distribution != 'RedHat'
     changed_when: false
     args:
       warn: false
+      executable: /bin/bash
 
   - name: codeready is enabled
     shell: |
+      set -o pipefail
       yum repolist|grep ^codeready-builder-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms
     when: ansible_distribution == 'RedHat'
     changed_when: false
     args:
       warn: false
+      executable: /bin/bash
+
 
 ...

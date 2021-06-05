@@ -25,6 +25,7 @@
     copy:
       src: RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
       dest: /etc/pki/rpm-gpg/
+      mode: '0644'
 
   - name: rpm gpg key is imported
     rpm_key:
@@ -35,7 +36,18 @@
     package:
       name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
 
-- name: enable CodeReady/PowerTools
+- name: enable dependencies for RHEL 7
+  rhsm_repository:
+    name: "{{ item }}"
+  loop:
+  - rhel-*-optional-rpms
+  - rhel-*-extras-rpms
+  - rhel-ha-for-rhel-*-server-rpms 
+  when:
+  - ansible_distribution == 'RedHat'
+  - ansible_distribution_major_version == '7'
+
+- name: enable dependencies for 8 and newer
   block:
 
   - name: enable codeready
@@ -50,8 +62,20 @@
       option: enabled
       value: '1'
       no_extra_spaces: true
+      mode: '0644'
     when: ansible_distribution != 'RedHat'
 
   when: ansible_distribution_major_version >= '8'
 
+- name: enable dependencies for RHEL 7
+  rhsm_repository:
+    name: "{{ item }}"
+  loop:
+  - rhel-*-optional-rpms
+  - rhel-*-extras-rpms
+  - rhel-ha-for-rhel-*-server-rpms 
+  when:
+  - ansible_distribution == 'RedHat'
+  - ansible_distribution_major_version == '7'
+  
 ...
