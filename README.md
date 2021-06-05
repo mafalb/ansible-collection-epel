@@ -11,7 +11,7 @@ Ansible collection mafalb.epel
 
 ## Roles
 
-### [mafalb.epel.roleX](roles/roleX }}/README.md)
+### [mafalb.epel.release](roles/epel/README.md)
 
 ## License
 

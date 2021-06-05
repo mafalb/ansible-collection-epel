@@ -10,11 +10,6 @@
 
   roles:
 
-  - role: mafalb.epel.role1
-
-  tasks:
-
-  - name: test
-    fail:
+  - role: mafalb.epel.release
 
 ...

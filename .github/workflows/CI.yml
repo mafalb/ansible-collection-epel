@@ -33,11 +33,6 @@ jobs:
         - alma8
         - centos7
         - centos8
-        - debian9
-        - debian10
-        - ubuntu-16.04
-        - ubuntu-18.04
-        - ubuntu-20.04
 
         ansible_version:
         - '2.9'
@@ -72,26 +67,6 @@ jobs:
         - target: centos8
           distribution: centos
           version: 8
-
-        - target: debian9
-          distribution: debian
-          version: stretch
-
-        - target: debian10
-          distribution: debian
-          version: buster
-
-        - target: ubuntu-16.04
-          distribution: ubuntu
-          version: xenial
-
-        - target: ubuntu-18.04
-          distribution: ubuntu
-          version: bionic
-
-        - target: ubuntu-20.04
-          distribution: ubuntu
-          version: focal
 
     env:
       
