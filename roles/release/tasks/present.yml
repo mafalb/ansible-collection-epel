@@ -35,14 +35,23 @@
     package:
       name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
 
-  when:
-  - not epel_release_from_distro
+- name: enable CodeReady/PowerTools
+  block:
 
+  - name: enable codeready
+    rhsm_repository:
+      name: codeready-builder-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms
+    when: ansible_distribution == 'RedHat'
+      
+  - name: enable codeready/powertools
+    ini_file:
+      dest: /etc/yum.repos.d/{{ powertools_repo_file }}
+      section: powertools
+      option: enabled
+      value: '1'
+      no_extra_spaces: true
+    when: ansible_distribution != 'RedHat'
 
-- name: epel-release from distro
-  package:
-    name: epel-release
-  when:
-  - epel_release_from_distro
+  when: ansible_distribution_major_version >= '8'
 
 ...

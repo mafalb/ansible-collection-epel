@@ -10,8 +10,20 @@
 
   tasks:
 
-  - name: Example assertion
-    assert:
-      that: false
+  - name: powertools is enabled
+    shell: |
+      yum repolist|grep ^powertools
+    when: ansible_distribution != 'RedHat'
+    changed_when: false
+    args:
+      warn: false
+
+  - name: codeready is enabled
+    shell: |
+      yum repolist|grep ^codeready-builder-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms
+    when: ansible_distribution == 'RedHat'
+    changed_when: false
+    args:
+      warn: false
 
 ...

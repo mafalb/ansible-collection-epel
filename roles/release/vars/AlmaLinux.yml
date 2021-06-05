@@ -18,20 +18,6 @@
 # along with ansible-collection-openssh.
 # If not, see <https://www.gnu.org/licenses/>.
 
-- name: get OS specific variables
-  with_first_found:
-  - "{{ ansible_distribution }}.yml"
-  include_vars:
-    file: "{{ item }}"
-
-- name: assertions
-  assert:
-    that:
-    - epel_repo_state in [ 'present', 'absent' ]
-    - ansible_os_family == 'RedHat'
-    - ansible_distribution != 'Fedora'
-
-- name: include_tasks for epel_repo_state
-  include_tasks: "{{ epel_repo_state }}.yml"
+powertools_repo_file: almalinux.repo
 
 ...
