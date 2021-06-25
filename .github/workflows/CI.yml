@@ -110,7 +110,7 @@ jobs:
         molecule test
 
     - name: molecule tests for epel-next-release
-      if: matrix.test-epel-next-release == true
+      if: matrix.test_epel_next_release == true
       run: |
         source ~/.virtualenvs/molecule/bin/activate
         molecule test -s next-release
