@@ -12,8 +12,8 @@
 
   - block:
 
-    - name: include mafalb.epel.next-release
+    - name: include mafalb.epel.next_release
       include_role:
-        name: mafalb.epel.next-release
+        name: mafalb.epel.next_release
 
 ...

@@ -12,7 +12,9 @@ Ansible collection mafalb.epel
 For documentation on the epel project see [https://fedoraproject.org/wiki/EPEL](https://fedoraproject.org/wiki/EPEL)
 ## Roles
 
-### [mafalb.epel.release](roles/epel/README.md)
+### [mafalb.epel.release](roles/release/README.md)
+
+### [mafalb.epel.next_release](roles/next_elease/README.md)
 
 ## License
 
