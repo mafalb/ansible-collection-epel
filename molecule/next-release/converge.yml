@@ -23,8 +23,8 @@
 
   tasks:
 
-  - name: include mafalb.epel.next_release
+  - name: include mafalb.epel.next
     include_role:
-      name: mafalb.epel.next_release
+      name: mafalb.epel.next
 
 ...

@@ -14,7 +14,7 @@ For documentation on the epel project see [https://fedoraproject.org/wiki/EPEL](
 
 ### [mafalb.epel.release](roles/release/README.md)
 
-### [mafalb.epel.next_release](roles/next_elease/README.md)
+### [mafalb.epel.next](roles/next/README.md)
 
 ## License
 
