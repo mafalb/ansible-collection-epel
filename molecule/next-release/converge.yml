@@ -3,6 +3,18 @@
 
 - name: converge epel next
   hosts: all,!infrastructure_group
+  tasks:
+  - name: get eligible nodes for epel-next-release
+    group_by:
+      key: el{{ ansible_distribution_major_version }}
+      parents: el8andnewer
+    when:
+    - ansible_distribution_major_version is version('8','>=')
+    - ansible_distribution != 'Fedora'
+    - ansible_os_family == 'RedHat'
+
+- name: converge epel next
+  hosts: el8andnewer
 
   environment:
     http_proxy: http://ci-proxy:3128
@@ -13,6 +25,5 @@
   - name: include mafalb.epel.next_release
     include_role:
       name: mafalb.epel.next_release
-#    when: ansible_distribution_major_version is version('8','>=')
 
 ...
