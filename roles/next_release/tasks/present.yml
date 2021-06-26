@@ -18,7 +18,11 @@
 # along with ansible-collection-openssh.
 # If not, see <https://www.gnu.org/licenses/>.
 
-- name: assert that epel-next-release is available for your OS
+- name: epel is required
+  include_role:
+    name: mafalb.epel.release
+    
+- name: assert CentOS Stream
   assert:
     that:
     - ansible_distribution == 'CentOS'
