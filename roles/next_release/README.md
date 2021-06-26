@@ -5,17 +5,17 @@
 ## Basic Usage
 
 ```yaml
-- name: install mafalb.epel.next-release
+- name: install mafalb.epel.next_release
   hosts: localhost
   roles:
-  - role: mafalb.epel.next-release
+  - role: mafalb.epel.next_release
 ```
 
 ```yaml
-- name: remove mafalb.epel.next-release
+- name: remove mafalb.epel.next_release
   hosts: localhost
   roles:
-  - role: mafalb.epel.next-release
+  - role: mafalb.epel.next_release
     epel_repo_state: absent
   - role: mafalb.epel.release
     epel_repo_state: absent
