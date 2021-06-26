@@ -52,7 +52,6 @@ jobs:
           distribution: centos
           registry: "quay.io/centos/"
           version: stream8
-          test_epel_next_release: true
 
         - target: alma8
           distribution: almalinux
@@ -110,7 +109,6 @@ jobs:
         molecule test
 
     - name: molecule tests for epel-next-release
-      if: matrix.test_epel_next_release == true
       run: |
         source ~/.virtualenvs/molecule/bin/activate
         molecule test -s next-release
