@@ -1,7 +1,7 @@
 # vim: set ft=yaml ts=2 expandtab:
 ---
 
-- name: converge epel
+- name: converge epel next
   hosts: all,!infrastructure_group
 
   environment:
@@ -10,10 +10,9 @@
 
   tasks:
 
-  - block:
-
-    - name: include mafalb.epel.next_release
-      include_role:
-        name: mafalb.epel.next_release
+  - name: include mafalb.epel.next_release
+    include_role:
+      name: mafalb.epel.next_release
+#    when: ansible_distribution_major_version is version('8','>=')
 
 ...
