@@ -24,6 +24,7 @@
     - epel_repo_state in [ 'present', 'absent' ]
     - ansible_os_family == 'RedHat'
     - ansible_distribution != 'Fedora'
+    - ansible_distribution_major_version is version('8', '>=')
 
 - name: include_tasks for epel_repo_state
   include_tasks: "{{ epel_repo_state }}.yml"

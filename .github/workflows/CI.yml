@@ -27,8 +27,6 @@ jobs:
       matrix:
 
         target:
-        - fedora33
-        - fedora34
         - c8s
         - alma8
         - centos7
@@ -37,16 +35,9 @@ jobs:
         ansible_version:
         - '2.9'
         - '2.10'
+        - '2.11'
 
         include:
-
-        - target: fedora33
-          distribution: fedora
-          version: 33
-
-        - target: fedora34
-          distribution: fedora
-          version: 34
 
         - target: c8s
           distribution: centos
@@ -57,8 +48,6 @@ jobs:
           distribution: almalinux
           registry: "docker.io/almalinux/"
           version: 8
-          test_molecule: true
-          test_controlnode: true
 
         - target: centos7
           distribution: centos
