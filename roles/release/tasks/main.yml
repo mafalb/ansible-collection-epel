@@ -28,7 +28,7 @@
   assert:
     that:
     - epel_repo_state in [ 'present', 'absent' ]
-    - ansible_os_family == 'RedHat'
+    - ansible_os_family in ['RedHat', 'Rocky']
     - ansible_distribution != 'Fedora'
 
 - name: include_tasks for epel_repo_state
