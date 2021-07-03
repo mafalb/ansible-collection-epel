@@ -34,6 +34,7 @@ galaxy_info:
   galaxy_tags:
   - epel
 
+allow_duplicates: false
 dependencies: []
 
 ...
