@@ -19,17 +19,17 @@
 # If not, see <https://www.gnu.org/licenses/>.
 
 - name: rpm gpg key is present
-  copy:
+  ansible.builtin.copy:
     src: RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
     dest: /etc/pki/rpm-gpg/
     mode: '0644'
 
 - name: rpm gpg key is imported
-  rpm_key:
+  ansible.builtin.rpm_key:
     key: /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
 
 - name: epel-release is present
-  package:
+  ansible.builtin.package:
     name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
 
 - name: enable dependencies for RHEL 7

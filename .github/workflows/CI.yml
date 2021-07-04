@@ -53,7 +53,7 @@ jobs:
         - target: rocky8
           distribution: rockylinux
           registry: "docker.io/rockylinux/"
-          tag: '8'
+          version: '8'
 
         - target: centos7
           distribution: centos

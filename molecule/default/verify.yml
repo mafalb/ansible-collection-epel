@@ -11,7 +11,7 @@
   tasks:
 
   - name: powertools is enabled
-    shell: |
+    ansible.builtin.shell: |
       set -o pipefail
       yum repolist|grep ^powertools
     when:
@@ -23,7 +23,7 @@
       executable: /bin/bash
 
   - name: codeready is enabled
-    shell: |
+    ansible.builtin.shell: |
       set -o pipefail
       yum repolist|grep ^codeready-builder-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms
     when:
@@ -35,7 +35,7 @@
       executable: /bin/bash
 
   - name: test package install
-    package:
+    ansible.builtin.package:
       name: epel-rpm-macros.noarch
 
 ...

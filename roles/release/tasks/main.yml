@@ -19,19 +19,19 @@
 # If not, see <https://www.gnu.org/licenses/>.
 
 - name: get OS specific variables
+  ansible.builtin.include_vars:
+    file: "{{ item }}"
   with_first_found:
   - "{{ ansible_distribution }}.yml"
-  include_vars:
-    file: "{{ item }}"
 
 - name: assertions
-  assert:
+  ansible.builtin.assert:
     that:
     - epel_repo_state in [ 'present', 'absent' ]
     - ansible_os_family in ['RedHat', 'Rocky']
     - ansible_distribution != 'Fedora'
 
 - name: include_tasks for epel_repo_state
-  include_tasks: "{{ epel_repo_state }}.yml"
+  ansible.builtin.include_tasks: "{{ epel_repo_state }}.yml"
 
 ...
