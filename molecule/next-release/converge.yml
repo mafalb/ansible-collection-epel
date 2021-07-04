@@ -3,9 +3,11 @@
 
 - name: converge epel next
   hosts: all,!infrastructure_group
+
   tasks:
+
   - name: get eligible nodes for epel-next-release
-    group_by:
+    ansible.builtin.group_by:
       key: el{{ ansible_distribution_major_version }}
       parents: el8andnewer
     when:
@@ -24,7 +26,7 @@
   tasks:
 
   - name: include mafalb.epel.next
-    include_role:
+    ansible.builtin.include_role:
       name: mafalb.epel.next
 
 ...

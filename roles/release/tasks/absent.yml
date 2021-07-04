@@ -19,7 +19,7 @@
 # If not, see <https://www.gnu.org/licenses/>.
 
 - name: epel-release is absent
-  package:
+  ansible.builtin.package:
     name: epel-release
     state: absent
 
