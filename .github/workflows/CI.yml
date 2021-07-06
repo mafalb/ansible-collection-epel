@@ -48,10 +48,10 @@ jobs:
         include:
 
         - target: fedora33
-          image: docker.io/fedora/fedora:33
+          image: docker.io/fedora:33
 
         - target: fedora34
-          image: docker.io/fedora/fedora:34
+          image: docker.io/fedora:34
 
         - target: c8s
           image: quay.io/centos/centos:stream8
