@@ -32,6 +32,7 @@
 
 - name: include_tasks for epel_repo_state
   ansible.builtin.include_tasks: "{{ epel_repo_state }}.yml"
+  when:
   - ansible_os_family in ['RedHat', 'Rocky']
   - ansible_distribution != 'Fedora'
 
