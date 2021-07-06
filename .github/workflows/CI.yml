@@ -36,6 +36,9 @@ jobs:
         - centos8
         - debian9
         - debian10
+        - ubuntu16
+        - ubuntu18
+        - ubuntu20
 
         ansible_version:
         - '2.9'
@@ -87,15 +90,15 @@ jobs:
           distribution: debian
           version: buster
 
-        - target: ubuntu-16.04
+        - target: ubuntu16
           distribution: ubuntu
           version: xenial
 
-        - target: ubuntu-18.04
+        - target: ubuntu18
           distribution: ubuntu
           version: bionic
 
-        - target: ubuntu-20.04
+        - target: ubuntu20
           distribution: ubuntu
           version: focal
 
