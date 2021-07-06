@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.1 2021-07-06
+
+- make it compatible (noop) with other distributions like debian
+
 ## v0.1.0 2021-07-03
 
 - implement mafalb.epel.next-release

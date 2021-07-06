@@ -48,10 +48,10 @@ jobs:
         include:
 
         - target: fedora33
-          image: quay.io/fedora/fedora:33
+          image: hub.docker.com/fedora/fedora:33
 
         - target: fedora34
-          image: quay.io/fedora/fedora:34
+          image: hub.docker.com/fedora/fedora:34
 
         - target: c8s
           image: quay.io/centos/centos:stream8
@@ -69,19 +69,19 @@ jobs:
           image: quay.io/centos/centos:8
 
         - target: debian9
-          image: docker.io/debian:stretch
+          image: hub.docker.com/debian:stretch
 
         - target: debian10
-          image: docker.io/debian:buster
+          image: hub.docker.com/debian:buster
 
         - target: ubuntu16
-          image: docker.io/ubuntu:xenial
+          image: hub.docker.com/ubuntu:xenial
 
         - target: ubuntu18
-          image: docker.io/ubuntu:bionic
+          image: hub.docker.com/ubuntu:bionic
 
         - target: ubuntu20
-          image: docker.io/ubuntu:focal
+          image: hub.docker.com/ubuntu:focal
 
     env:
       
