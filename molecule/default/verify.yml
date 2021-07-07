@@ -2,7 +2,7 @@
 ---
 
 - name: verify
-  hosts: all,!infrastructure_group,!ci-fedora*
+  hosts: all,!infrastructure_group,!ci-fedora*,!ci-debian*,!ci-ubuntu*
 
   environment:
     http_proxy: http://ci-proxy:3128

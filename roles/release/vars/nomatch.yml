@@ -18,22 +18,4 @@
 # along with ansible-collection-openssh.
 # If not, see <https://www.gnu.org/licenses/>.
 
-- name: get OS specific variables
-  ansible.builtin.include_vars:
-    file: "{{ item }}"
-  with_first_found:
-  - "{{ ansible_distribution }}.yml"
-  - "nomatch.yml"
-
-- name: assertions
-  ansible.builtin.assert:
-    that:
-    - epel_repo_state in [ 'present', 'absent' ]
-
-- name: include_tasks for epel_repo_state
-  ansible.builtin.include_tasks: "{{ epel_repo_state }}.yml"
-  when:
-  - ansible_os_family in ['RedHat', 'Rocky']
-  - ansible_distribution != 'Fedora'
-
 ...
