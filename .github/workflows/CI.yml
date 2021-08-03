@@ -39,6 +39,7 @@ jobs:
         - ubuntu16
         - ubuntu18
         - ubuntu20
+        - ubuntu2004
 
         ansible_version:
         - '2.9'
@@ -82,6 +83,9 @@ jobs:
 
         - target: ubuntu20
           image: docker.io/ubuntu:focal
+
+        - target: ubuntu2104
+          image: docker.io/ubuntu:hirsute
 
     env:
       
