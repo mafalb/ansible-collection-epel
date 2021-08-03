@@ -1,0 +1,97 @@
+# vim: set ft=yaml ts=2 expandtab:
+---
+
+name: UNSTABLE
+
+on: 
+
+  push:
+    branches:
+    - '**'
+    tags-ignore:
+    - '*'
+
+  schedule:
+  - cron: '40 12 * * 6'
+
+jobs:
+
+  UNSTABLE:
+
+    runs-on: ubuntu-20.04
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+
+        target:
+        - fedora35
+        - c9s
+        - debian11
+        - ubuntu2110
+
+        ansible_version:
+        - '2.9'
+        - '2.10'
+        - '2.11'
+
+        include:
+
+        - target: fedora35
+          image: quay.io/fedora/fedora:35-x86_64
+          privileged: true
+
+        # mock mafalb.epel.release
+        # install mafalb.epel.next instead
+        #
+        - target: c9s
+          image: quay.io/centos/centos:stream9-development
+          privileged: true
+
+        - target: debian11
+          image: docker.io/debian:bullseye
+          privileged: true
+
+        - target: ubuntu2110
+          image: docker.io/ubuntu:impish
+
+    env:
+      ANSIBLE_VERSION: ${{ matrix.ansible_version }}
+      CI_IMAGE: ${{ matrix.image }}
+      CI_HOSTNAME: ci-${{ matrix.target }}
+      CI_PRIVILEGED: ${{ matrix.privileged }}
+      PY_COLORS: 1
+      ANSIBLE_FORCE_COLOR: 1
+ 
+    defaults:
+      run:
+        working-directory: ansible_collections/mafalb/epel
+
+    steps:
+
+    - name: checkout collection mafalb.epel
+      uses: actions/checkout@v2
+      with:
+        path: ansible_collections/mafalb/epel
+
+    - name: install molecule
+      run: |
+        ansible-galaxy collection install mafalb.ansible
+        ansible-playbook -e ansible_python_interpreter=python3 -D ~/.ansible/collections/ansible_collections/mafalb/ansible/playbooks/molecule.yml -e molecule_ansible_version=${{ matrix.ansible_version }} -t all,debug
+
+    - name: check ansible version
+      run: |
+        source ~/.virtualenvs/molecule/bin/activate
+        ansible --version | grep "^ansible.* ${{ matrix.ansible_version }}"
+
+    - name: molecule tests
+      run: |
+        source ~/.virtualenvs/molecule/bin/activate
+        molecule test
+
+    - name: molecule tests for epel-next-release
+      run: |
+        source ~/.virtualenvs/molecule/bin/activate
+        molecule test -s next-release
+...
