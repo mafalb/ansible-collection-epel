@@ -30,10 +30,22 @@
     that:
     - epel_repo_state in [ 'present', 'absent' ]
 
+# do not do it for epel9
+# it does not exist yet
+#
 - name: include_tasks for epel_repo_state
   ansible.builtin.include_tasks: "{{ epel_repo_state }}.yml"
   when:
   - ansible_os_family in ['RedHat', 'Rocky']
   - ansible_distribution != 'Fedora'
+  - ansible_distribution_major_version is version('9', '<')
+
+- name: include role for epel_next instead
+  include_role:
+    name: mafalb.epel.next
+  when:
+  - ansible_os_family in ['RedHat', 'Rocky']
+  - ansible_distribution != 'Fedora'
+  - ansible_distribution_major_version is version('9')
 
 ...
